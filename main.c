@@ -1,8 +1,8 @@
 # include <stdio.h>
 
 void
-leerFichero( char** argv ) {
-	FILE *fichero = fopen( argv[1], "r" );
+leerFichero( char* nombre ) {
+	FILE *fichero = fopen( nombre, "r" );
 	if( fichero != NULL ) {
 		char caracter;
 		while( feof( fichero ) == 0 ) {
@@ -21,6 +21,6 @@ main( int argc, char** argv ) {
 		fprintf( stderr, "Tienes que pasar el nombre del fichero por parámetro.\n" );
 		return( -1 );
 	}
-	leerFichero( argv );
+	leerFichero( argv[1] );
 	return( 0 );
 }
