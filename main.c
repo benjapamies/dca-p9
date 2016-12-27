@@ -1,14 +1,23 @@
 # include <stdio.h>
 
 void
+escribirFichero( char texto[] ) {
+	FILE *fichero = fopen( "salida.txt", "w" );
+	fprintf( fichero, texto );
+	fclose( fichero );
+}
+
+void
 leerFichero( char* nombre ) {
 	FILE *fichero = fopen( nombre, "r" );
 	if( fichero != NULL ) {
-		char caracter;
+		char texto[100];
+		int i = 0;
 		while( feof( fichero ) == 0 ) {
-			caracter = fgetc( fichero );
-			printf( "%c", caracter );
+			texto[i] = fgetc( fichero );
+			i ++;
 		}
+		escribirFichero( texto );
 		fclose( fichero );
 	} else {
 		printf( "Error al abrir el fichero.\n" );
